@@ -25,7 +25,7 @@ _Note: Replace `<version>` with a release verion e.g. `v1.0.0`_
 
 _Note: Before sending me e-mails, please read the help documentations_  
 
-## Usage recommendations
+### Recommendations
 - The client accepts a lot of parameters/options as environment variables
 - So you can call `dip_client list-users -s http://<server>`
 - And you can call `DIP_CLIENT_STATIC_SERVER="http://<server>" dip_client list-users`
@@ -44,7 +44,7 @@ _Note: Before sending me e-mails, please read the help documentations_
     2) Source the environment variables into your shell using `source ./env.sh`  
     3) Call the CLI client without the fluff: `dip_client list-users`  
 
-### Usage example: Creating a user
+### Example: Creating a user
 ```bash
 $ source ./env.sh # Load static server URL into environment
 $ ./dip_client user-create -u kshaa -p <password>
@@ -56,7 +56,7 @@ $ ./dip_client user-create -u kshaa -p <password>
 └──────────────────────────────────────┴──────────┘
 ```
 
-### Usage example: Setting up an Anvyl upload agent
+### Example: Setting up an Anvyl upload agent
 First register the hardware in the Testbed  
 ```bash
 $ echo 'export DIP_USER_USERNAME="<username>"' > ./env.sh
@@ -86,7 +86,7 @@ but that's not currently implemented._
   
 _Note: Only one agent can be spawned for a given hardware id._  
   
-### Usage example: Uploading software to an Anvyl agent
+### Example: Uploading software to an Anvyl agent
 First you need to upload a program file  
 ```bash
 $ source ./env.sh # Load static server and auth into environment
@@ -138,7 +138,32 @@ Upload failed, was the firmware a valid program?
 /tmp/_MEIKYAIie/static/digilent_anvyl/upload.sh: line 84: 644782 Segmentation fault      (core dumped) djtgcfg prog -d "${device}" -i ${scanchainindex} -f "${firmwarehextmp}"
 ```
 
-### Usage extras
+### Example: Monitor hardware serial port remotely
+_Pre-requisites: Download this repo, specifically [examples/anvyl-uart-remote/](./examples/anvyl-uart-remote/)_  
+_Pre-requisites: Compile [examples/anvyl-uart-remote/](./examples/anvyl-uart-remote/) in Xilinx ISE thereby creating `main.bit`_  
+```bash
+$ source ./env.sh # Load static server and auth into environment
+$ # First upload the compiled example project
+$ ./dip_client software-upload -n anvyl-uart-remote.bit -f examples/anvyl-uart-remote/main.bit
+                                             Software list                                             
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Id                                   ┃ Name                  ┃ Owner id                             ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 95b575a3-a8c8-4962-9abf-ffe96e1ad264 │ anvyl-uart-remote.bit │ 84633ccd-d089-4127-8a9c-b10cb21eef9c │
+└──────────────────────────────────────┴───────────────────────┴──────────────────────────────────────┘
+$ # Then upload that software onto the hardware (supposing that the hardware is online)
+$ ./dip_client hardware-software-upload --hardware-id adc0d413-468d-4719-b202-79dacc47ba2d --software-id 95b575a3-a8c8-4962-9abf-ffe96e1ad264
+Success: Uploaded software to hardware!
+$ # Then monitor the hardware serial port remotely
+$ ./dip_client hardware-serial-monitor -i adc0d413-468d-4719-b202-79dacc47ba2d
+666666bbbbbcccccdddddee
+Success: Finished monitoring hardware!
+```
+
+_Note: For exiting the serial monitor use Ctrl-C._  
+_Note: For more info on the Anvyl UART remote program and the architecture of this Testbed, read [examples/anvyl-uart-remote/README.md](./examples/anvyl-uart-remote/README.md)._  
+
+### Extras
 Most requests are capable of also printing out JSON instead of tables:
 ```bash
 $ source ./env.sh # Load static server and auth into environment
@@ -166,8 +191,8 @@ $ DIP_CLIENT_JSON_OUTPUT=true ./dip_client software-list # Option no. 2
 - In other words, use randomly generated passwords not your personal ones  
 - HTTP server (static server): `http://159.223.31.101:9000/`  
 - WebSocket server (control server): `ws://159.223.31.101:9000/`  
-- _Note: This server is in development, please don't abuse it_  
-- _Note: If you do abuse it, create a GitHub issue in this repo describing how you abused it_  
+- _Note: This server is in development, please don't abuse it, it can be abused somewhat easily currently_  
+- _Note: If you do abuse it, don't be _too_ aggressive/destructive, also create a GitHub issue in this repo describing how you abused it_  
 - _Note: If you have any suggestions for improvements, also create an issue in this repo_  
-- _Note: If you have any questions, create an issue or write an e-mail/message to me_  
+- _Note: If you have any questions, create an issue or send me an e-mail/message_  
   
