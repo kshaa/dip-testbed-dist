@@ -71,7 +71,7 @@ module main(
 	reg r_tx_ready = 0;
 	assign tx_ready = r_tx_ready;
 	
-   // Assign rx_data + 1 to tx_data
+    // Assign rx_data + 1 to tx_data
 	assign tx_data[0] = rx_data_reg_prim[0];
 	assign tx_data[1] = rx_data_reg_prim[1];
 	assign tx_data[2] = rx_data_reg_prim[2];
@@ -99,7 +99,8 @@ module main(
 	//
 	// N.B. If you write too fast, then the agent won't catch up
 	// and eventually will lag extremely behind and you'll be sad
-	parameter sleep = 32'd30000000;
+	// parameter sleep = 32'd30000000; // Around 3 FPS
+    parameter sleep = 32'd2000000; // Around 50 FPS
 	always @(posedge CLK)
 	begin
 		if (r_ticks < sleep) begin
