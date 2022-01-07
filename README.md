@@ -7,10 +7,9 @@ and executables.
   
 ## Client usage
   
-The client is available as a compiled release:
-  `https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_client -L -o dip_client`
+The client is available as a compiled release: `https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_client_<arch>`
 
-_Note: Replace `<version>` with a release verion e.g. `v3.0.0`_  
+_Note: Replace `<version>` with a release verion e.g. `v3.0.0`, and `<arch>` with a CPU architecture e.g. `x86_64`_  
 
 For more documentations see [CLIENT.md](./CLIENT.md)  
 For reference the client is a Python application packaged w/ [pyinstaller](https://pyinstaller.readthedocs.io/en/stable/)  
@@ -23,8 +22,7 @@ For reference the interesting libraries used in the client stack are:
 
 ## Server usage
   
-The client is available as a compiled release:
-  `https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_server.zip -L -o dip_server.zip`
+The client is available as a compiled release: `https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_server.zip`
 
 _Note: Replace `<version>` with a release verion e.g. `v3.0.0`_  
 

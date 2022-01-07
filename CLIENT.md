@@ -2,9 +2,9 @@
   
 1) Download CLI client:  
 ```bash
-curl https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_client -L -o dip_client
+curl https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_client_<arch> -L -o dip_client
 ```
-_Note: Replace `<version>` with a release verion e.g. `v2.0.1`_  
+_Note: Replace `<version>` with a release verion e.g. `v3.0.0` and `<arch>` with a CPU architecture e.g. `x86_64`_  
   
 2) Make this binary executable: [read a how-to article](https://lmgtfy.app/?q=linux+make+binary+executable)  
 3) Configure this binary in your PATH permanently: [read a how-to article](https://lmgtfy.app/?q=ubuntu+add+binary+to+path+permanently)  
