@@ -1,0 +1,14 @@
+# vim
+*~
+*.swp
+*.swo
+
+# vscode
+.vscode/
+
+# idea
+.idea/
+
+# scala
+.metals/
+.bsp/

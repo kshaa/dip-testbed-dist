@@ -4,7 +4,7 @@
 ```bash
 curl https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_client_<arch> -L -o dip_client
 ```
-_Note: Replace `<version>` with a release verion e.g. `v3.0.0` and `<arch>` with a CPU architecture e.g. `x86_64`_  
+_Note: Replace `<version>` with a release verion e.g. `v3.0.1` and `<arch>` with a CPU architecture e.g. `x86_64`_  
   
 2) Make this binary executable: [read a how-to article](https://lmgtfy.app/?q=linux+make+binary+executable)  
 3) Configure this binary in your PATH permanently: [read a how-to article](https://lmgtfy.app/?q=ubuntu+add+binary+to+path+permanently)  
@@ -129,6 +129,28 @@ Upload failed, was the firmware a valid program?
 ## Example: Monitor hardware serial port remotely
 _Pre-requisites: Download this repo, specifically [examples/anvyl-uart-remote/](./examples/anvyl-uart-remote/)_  
 _Pre-requisites: Compile [examples/anvyl-uart-remote/](./examples/anvyl-uart-remote/) in Xilinx ISE thereby creating `main.bit`_  
+
+Hardware monitoring is actively in-development, currently there are two possible implementations.
+
+### Monitoring types
+```bash
+$ ./dist/dip_client hardware-serial-monitor --help
+[...]
+  -t, --monitor-type [hexbytes|script]
+                                  Sets the type of monitor implementation to
+                                  be used  [env var: DIP_MONITOR_TYPE;
+                                  required]
+  -s, --monitor-script-path TEXT  File path to the monitor implementation
+                                  script e.g. './monitor-script.py'  [env var:
+                                  DIP_MONITOR_SCRIPT_PATH]
+[...]
+```
+  
+As you can see the possible monitoring types are `hexbytes` and `script`.  
+- `hexbytes` - Monitor port as a hex byte stream
+- `script` - Use custom Python script for managing monitoring socket rx, tx & interfacing
+
+### Monitor serial port as hex byte stream
 ```bash
 $ source ./env.sh # Load static server and auth into environment
 $ # First upload the compiled example project
@@ -149,7 +171,15 @@ Success: Finished monitoring hardware!
 ```
 
 _Note: For exiting the serial monitor use Ctrl-C._  
-_Note: For more info on the Anvyl UART remote program and the architecture of this Testbed, read [examples/anvyl-uart-remote/README.md](./examples/anvyl-uart-remote/README.md)._  
+_Note: For more info on the Anvyl UART remote program and the architecture of this Testbed, read [examples/anvyl-uart-remote/README.md](./examples/anvyl-uart-remote/README.md)._    
+
+### Monitor serial port using custom Python script
+See [./examples/monitor_serial_hexbytes/README.md](./examples/monitor_serial_hexbytes/README.md) for more info.  
+
+The custom script can be executed as follows:  
+```bash
+$ ./dip_client hardware-serial-monitor -i adc0d413-468d-4719-b202-79dacc47ba2d -t script -s ./examples/monitor_serial_hexbytes/monitor.py
+```
 
 ## Extras
 Most requests are capable of also printing out JSON instead of tables:

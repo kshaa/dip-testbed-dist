@@ -4,7 +4,7 @@
 ```bash
 curl https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_server.zip -L -o dip_server.zip  
 ```
-_Note: Replace `<version>` with a release verion e.g. `v3.0.0`_  
+_Note: Replace `<version>` with a release verion e.g. `v3.0.1`_  
   
 2) Decompress the zip archive: [read a how-to article](https://lmgtfy.app/?q=linux+unzip+archive)  
 3) Enter the extracted directory `web-a.b.c-SNAPSHOT` where `a.b.c` is the version, but currently incorrect - `0.1.0`  
