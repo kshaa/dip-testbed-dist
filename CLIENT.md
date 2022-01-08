@@ -4,7 +4,7 @@
 ```bash
 curl https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_client_<arch> -L -o dip_client
 ```
-_Note: Replace `<version>` with a release verion e.g. `v3.0.1` and `<arch>` with a CPU architecture e.g. `x86_64`_  
+_Note: Replace `<version>` with a release verion e.g. `v3.0.2` and `<arch>` with a CPU architecture e.g. `x86_64`_  
   
 2) Make this binary executable: [read a how-to article](https://lmgtfy.app/?q=linux+make+binary+executable)  
 3) Configure this binary in your PATH permanently: [read a how-to article](https://lmgtfy.app/?q=ubuntu+add+binary+to+path+permanently)  
@@ -136,7 +136,7 @@ Hardware monitoring is actively in-development, currently there are two possible
 ```bash
 $ ./dist/dip_client hardware-serial-monitor --help
 [...]
-  -t, --monitor-type [hexbytes|script]
+  -t, --monitor-type [hexbytes|buttonleds|script]
                                   Sets the type of monitor implementation to
                                   be used  [env var: DIP_MONITOR_TYPE;
                                   required]
@@ -147,10 +147,11 @@ $ ./dist/dip_client hardware-serial-monitor --help
 ```
   
 As you can see the possible monitoring types are `hexbytes` and `script`.  
-- `hexbytes` - Monitor port as a hex byte stream
-- `script` - Use custom Python script for managing monitoring socket rx, tx & interfacing
+- `hexbytes` - Monitor port payload as a hex byte stream  
+- `buttonleds` - Interact with serial data as a graphical button & LED interface  
+- `script` - Use custom Python script for managing monitoring socket rx, tx & interfacing  
 
-### Monitor serial port as hex byte stream
+### Monitor serial port as hex byte stream (`hexbytes`)
 ```bash
 $ source ./env.sh # Load static server and auth into environment
 $ # First upload the compiled example project
@@ -173,7 +174,24 @@ Success: Finished monitoring hardware!
 _Note: For exiting the serial monitor use Ctrl-C._  
 _Note: For more info on the Anvyl UART remote program and the architecture of this Testbed, read [examples/anvyl-uart-remote/README.md](./examples/anvyl-uart-remote/README.md)._    
 
-### Monitor serial port using custom Python script
+
+### Monitor serial port using custom Python script (`buttonleds`)
+```bash
+$ ./dist/dip_client hardware-serial-monitor --hardware-id 44a2e91b-00aa-41f6-91b1-3d7b18f5f5fa -t buttonleds
+[INFO   ] [Logger      ] Record log in $REDACTED_HOME/.kivy/logs/kivy_22-01-09_22.txt
+[INFO   ] [Kivy        ] v2.0.0
+[INFO   ] [Kivy        ] Installed at "/tmp/_MEIznRFvk/kivy/__init__.pyc"
+[INFO   ] [Python      ] v3.9.7 (default, Jan  7 2022, 13:30:11) 
+[...]
+```
+  
+The graphical interface looks as follows:  
+![Graphical button, LED interface](./assets/graphical-button-led-interface.png)  
+
+Each button is simply sent as a byte, e.g. `BTN1` is `0x01` i.e. `0b00000001`.  
+Each received byte resets the LEDs, e.g. `0b01000001` means `LED1` and `LED7` are on.  
+
+### Monitor serial port using custom Python script (`script`)
 See [./examples/monitor_serial_hexbytes/README.md](./examples/monitor_serial_hexbytes/README.md) for more info.  
 
 The custom script can be executed as follows:  
