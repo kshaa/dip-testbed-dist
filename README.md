@@ -43,9 +43,11 @@ For reference the interesting libraries used in the server stack are:
 - HTTP server i.e. static server (all point to the same server):
   - `http://159.223.31.101:9000/`  
   - `http://testbed.veinbahs.lv:9000/`  
+  - `http://testbed.veinbahs.lv/`  
 - WebSocket server i.e. control server:
   - `ws://159.223.31.101:9000/`  
   - `ws://testbed.veinbahs.lv:9000/`  
+  - `ws://testbed.veinbahs.lv/`  
 - _Note: This server is in development, please don't abuse it, it can be abused somewhat easily currently_  
 - _Note: If you do abuse it, don't be _too_ aggressive/destructive, also create a GitHub issue in this repo describing how you abused it_  
 - _Note: If you have any suggestions for improvements, also create an issue in this repo_  
