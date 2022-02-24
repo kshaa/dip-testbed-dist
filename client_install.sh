@@ -24,10 +24,10 @@ if grep -q "${PROFILE_MARKER}" "${PROFILE}"; then
 else
     echo "DIP platform binaries not added to path, adding to profile"
     echo "export PATH=\"${DIP_BIN_DIR}:\${PATH}\" # ${PROFILE_MARKER}" >> ${PROFILE}
-    ${DIP_CLIENT_BIN} session-set-static-server "${DEFAULT_TESTBED_STATIC_URL}"
-    ${DIP_CLIENT_BIN} session-set-control-server "${DEFAULT_TESTBED_CONTROL_URL}"
+    ${DIP_CLIENT_BIN} session-static-server -s "${DEFAULT_TESTBED_STATIC_URL}"
+    ${DIP_CLIENT_BIN} session-control-server -c "${DEFAULT_TESTBED_CONTROL_URL}"
 fi
 
 # Starting a new shell w/ profile
-echo "Refreshing user profile by starting a new bash shell"
-bash
+echo "Restart your shell to use 'dip_client' by running the following:"
+echo "bash"

@@ -5,7 +5,7 @@ DIP Testbed Platform is an academic work which allows users to remotely program 
 ## Quick installation & usage
 Download the CLI tool:
 ```bash
-curl https://github.com/kshaa/dip-testbed-dist/releases/latest/download/client_install.sh | bash
+curl -L https://github.com/kshaa/dip-testbed-dist/releases/latest/download/client_install.sh | bash
 ```
   
 Create a local authentication session:
@@ -30,7 +30,7 @@ _Note: Quick run has all of the underlying mechanics configurable, see options w
 - Set executable bit
   
 ## Usage
-Configure academig DIP Testbed platform server:
+Configure academic DIP Testbed platform server:
 ```bash
 dip_client session-static-server -s http://testbed.veinbahs.lv
 dip_client session-control-server -s ws://testbed.veinbahs.lv
