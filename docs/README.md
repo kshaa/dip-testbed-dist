@@ -1,41 +1,26 @@
 # DIP Testbed Platform
 DIP Testbed Platform allows users to remotely program and experience physical, embedded devices through various virtual interfaces (uni-directional webcam stream, bi-directional serial connection stream).  
 
-## DIP Client usage
+## 🌸 🌼 DIP User Tutorial Guides 🌼 🌸
+_Hopefully if I have enough time I will create detailed tutorials for beginners_  
+_Meanwhile you can check out the platform prototypes which are like "get your hands dirty" type of tutorials_  
+  
+## 🌸 🌼 DIP Client 🌼 🌸
 DIP Client is the main CLI tool to interact with the DIP Testbed platform.  
-  
-The client is available as a compiled release: `https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_client_<arch>`  
-  
-_Note: Replace `<version>` with a release verion e.g. `v3.0.2`, and `<arch>` with a CPU architecture e.g. `amd64`_  
-  
 For more documentations see [CLIENT.md](./CLIENT.md)  
-For reference the client is a Python application packaged w/ [pyinstaller](https://pyinstaller.readthedocs.io/en/stable/)  
-For reference the interesting libraries used in the client stack are:
-- `websockets`
-- `requests`
-- `click`
-- `rich`
-- `pyserial`
 
-## DIP Platform usage prototypes
+Latest release: https://github.com/kshaa/dip-testbed-dist/releases/latest/download/dip_client_amd64  
+Quick install: `curl https://github.com/kshaa/dip-testbed-dist/releases/latest/download/client_install.sh | bash`  
+
+## 🌸 🌼 DIP Platform Prototypes 🌼 🌸
 The author of this academic work created various prototypes when manually emulating end-user usage of the platform.  
 The prototypes, their source codes and descriptions can be seen in [prototypes](../prototypes/README.md)  
   
 ## DIP Server usage  
 DIP Server is a central service responsible for data management and connecting platform end-users, hardware devices & virtual interfaces  
-  
-The client is available as a compiled release: `https://github.com/kshaa/dip-testbed-dist/releases/download/<version>/dip_server.zip`
-
-_Note: Replace `<version>` with a release verion e.g. `v3.0.2`_  
-
 For more documentations see [SERVER.md](./SERVER.md)  
-For reference the server is a Scala application packaged w/ [sbt dist](https://www.playframework.com/documentation/2.8.x/Deploying)  
-For reference the interesting libraries used in the server stack are:
-- `play`
-- `akka`
-- `slick`
-- `circe`
-- `h2` (for testing)
+  
+Latest release: https://github.com/kshaa/dip-testbed-dist/releases/latest/download/dip_server.zip  
 
 ## Academic purpose server
 - There is a server hosted in the cloud  
