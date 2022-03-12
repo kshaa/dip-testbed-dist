@@ -23,15 +23,9 @@ For more documentations see [SERVER.md](./SERVER.md)
 Latest release: https://github.com/kshaa/dip-testbed-dist/releases/latest/download/dip_server.zip  
 
 ## Academic purpose server
-- There is a server hosted in the cloud  
-- HTTP server i.e. static server (all point to the same server):
-  - `http://159.223.31.101:9000/`  
-  - `http://testbed.veinbahs.lv:9000/`  
-  - `http://testbed.veinbahs.lv/`  
-- WebSocket server i.e. control server:
-  - `ws://159.223.31.101:9000/`  
-  - `ws://testbed.veinbahs.lv:9000/`  
-  - `ws://testbed.veinbahs.lv/`  
+There is an academic test server hosted in the cloud:  
+- Static content server: [`http://testbed.veinbahs.lv/`](`http://testbed.veinbahs.lv/`)  
+- Control server: [`ws://testbed.veinbahs.lv/`](`ws://testbed.veinbahs.lv/`)  
 
 _Note: This server is a piece of academic work, no serious guarantees about data security are made, don't sensitive data here_  
 _Note: This server is in development, please don't abuse it, it can be abused somewhat easily currently_  
