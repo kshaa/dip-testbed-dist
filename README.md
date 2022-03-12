@@ -93,3 +93,32 @@ The following links are currently available only by special request
 - See [client](./client/README.md) for client and agent implementation & usage  
 - See [database](./database/README.md) for database usage  
   
+## Fun statistics
+```bash
+$ # Timestamp: 2022-03-13-00-17-25
+$ git clean -fxd
+[...]
+$ rm -rf ./backend/web/public # Not my code
+[...]
+$ docker run -v $PWD:/data mribeiro/cloc .
+     286 text files.
+     277 unique files.                                          
+    3794 files ignored.
+
+http://cloc.sourceforge.net v 1.60  T=1.12 s (197.9 files/s, 12522.3 lines/s)
+-----------------------------------------------------------------------------------
+Language                         files          blank        comment           code
+-----------------------------------------------------------------------------------
+Python                              90           1331            681           6047
+Scala                               89            477            107           3007
+Verilog-SystemVerilog               15            221            245           1053
+Bourne Shell                        18             96             92            398
+HTML                                 5              8              0             84
+SQL                                  1             17             14             43
+XML                                  1             13              7             39
+YAML                                 2              0              1             33
+C++                                  1              4             14             14
+-----------------------------------------------------------------------------------
+SUM:                               222           2167           1161          10718
+-----------------------------------------------------------------------------------
+```
