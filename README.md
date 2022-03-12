@@ -6,10 +6,10 @@ _N.B. This is an academic piece of work, it's rough around the edges, because ti
 
 ## Demo
 ### Installation
-[![asciicast](https://asciinema.org/a/doBhf1fLi2v0AA8L9ku5W0hcE.svg)](https://asciinema.org/a/doBhf1fLi2v0AA8L9ku5W0hcE)  
+[![asciicast](./docs/assets/1qW4VymT8G2blxtuMJqJcMboe.svg)](https://asciinema.org/a/1qW4VymT8G2blxtuMJqJcMboe)  
 
 ### Usage
-[![asciicast](https://asciinema.org/a/TJauvtQSHE06lYrFU7k4htOgn.svg)](https://asciinema.org/a/TJauvtQSHE06lYrFU7k4htOgn)  
+[![asciicast](./docs/assets/LKwWorWIw3TfYmJH7qKeG6ywP.png)](https://asciinema.org/a/LKwWorWIw3TfYmJH7qKeG6ywP)  
   
 ## Quick installation & usage
 Download the CLI tool:
