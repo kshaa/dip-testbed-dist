@@ -20,7 +20,7 @@ chmod +x "${DIP_CLIENT_BIN}"
 PROFILE="${HOME}/.bashrc"
 PROFILE_MARKER="DIPPLATFORM"
 if grep -q "${PROFILE_MARKER}" "${PROFILE}"; then
-    echo "DIP platform binaries already added to path, not adding again"
+    echo "DIP platform seems to be pre-configured, not updating configs again"
 else
     echo "DIP platform binaries not added to path, adding to profile"
     echo "export PATH=\"${DIP_BIN_DIR}:\${PATH}\" # ${PROFILE_MARKER}" >> ${PROFILE}
