@@ -1,0 +1,45 @@
+<hex_digit_null>     ::= "0"
+<hex_digit_non_null> ::= [1-9]
+<hex_digit_one>      ::= "1"
+<hex_digit_other>    ::= [2-9]
+<hex_digit_any>      ::= [0-9]
+<hex_letter>         ::= [A-F]
+
+<hex_symbol_null>     ::= <hex_digit_null>
+<hex_symbol_non_null> ::= <hex_digit_non_null> | <hex_letter>
+<hex_symbol_one>      ::= <hex_digit_one>
+<hex_symbol_other>    ::= <hex_digit_other> | <hex_letter>
+<hex_symbol_any>      ::= <hex_digit_any> | <hex_letter>
+
+<nibble_null>      ::= <hex_symbol_null>
+<nibble_non_null>  ::= <hex_symbol_non_null>
+<nibble_one>       ::= <hex_symbol_one>
+<nibble_other>     ::= <hex_symbol_other>
+<nibble_any>       ::= <hex_symbol_any>
+
+<byte_prefix> ::= "0x"
+<byte_suffix> ::= " "
+
+<byte_null>       ::= <byte_prefix> <nibble_null> <nibble_null> <byte_suffix>
+<byte_non_null_a> ::= <byte_prefix> <nibble_non_null> <nibble_any> <byte_suffix>
+<byte_non_null_b> ::= <byte_prefix> <nibble_null> <nibble_non_null> <byte_suffix>
+<byte_non_null>   ::= <byte_non_null_a> | <byte_non_null_b>
+<byte_one>        ::= <byte_prefix> <nibble_null> <nibble_one> <byte_suffix>
+<byte_other_a>    ::= <byte_prefix> <nibble_non_null> <nibble_any> <byte_suffix>
+<byte_other_b>    ::= <byte_prefix> <nibble_null> <nibble_other> <byte_suffix>
+<byte_other>      ::= <byte_other_a> | <byte_other_b>
+
+<unescaped_symbol>     ::= <byte_non_null>
+<escaped_symbol_null>  ::= <byte_null> <byte_null>
+<escaped_symbol_one>   ::= <byte_null> <byte_one>
+<escaped_symbol_other> ::= <byte_null> <byte_other>
+
+<chunk_type>  ::= <escaped_symbol_other>
+<chunk_start> ::= <chunk_type>
+
+<content_symbol> ::= <unescaped_symbol> | <escaped_symbol_null>
+<chunk_content>  ::= <content_symbol>*
+
+<chunk_end> ::= <escaped_symbol_one>
+
+<chunk> ::= <chunk_start> <chunk_content> <chunk_end>

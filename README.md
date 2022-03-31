@@ -3,7 +3,8 @@
 DIP Testbed Platform is an academic work which allows users to remotely program and experience physical, embedded devices through various virtual interfaces (uni-directional webcam stream, bi-directional serial connection stream).  
   
 _N.B. This is an academic piece of work, it's rough around the edges, because time was a significant constraint._  
-
+_N.B. It is not production grade in any way. It works, but it's an experiment, a prototype._  
+  
 ## Demo
 ### Installation
 [![asciicast](./docs/assets/1qW4VymT8G2blxtuMJqJcMboe.svg)](https://asciinema.org/a/1qW4VymT8G2blxtuMJqJcMboe)  
