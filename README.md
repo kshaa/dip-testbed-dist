@@ -1,3 +1,9 @@
+# Archival
+
+This repository was used for distributing documentation and binaries while the source code was closed and still in development. Now the source code is available publicly and all docs & binaries are there too.
+
+See [kshaa/dip-testbed](https://github.com/kshaa/dip-testbed).
+
 # DIP Testbed
   
 DIP Testbed Platform is an academic work which allows users to remotely program and experience physical, embedded devices through various virtual interfaces (uni-directional webcam stream, bi-directional serial connection stream).  
